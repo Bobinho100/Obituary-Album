@@ -1,0 +1,36 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid grey;
+}
+div h1{
+    font-size: 4.0vw;
+}
+
+
+div h4{
+    padding: 25px;
+    font-size: 2.0vw;
+}
+div h4:hover{
+    background-color: grey;
+    
+
+    cursor: pointer;
+}
+
+.obituary--not-yet{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+
+}
+
+
+
+
+
+
+

@@ -1,5 +1,12 @@
+import Overlay from "./Components/Overlay";
+import Layout from "./Components/Layout";
+
+
 function App() {
-  return <h1>The Last Show</h1>;
+  return(
+    <Layout />
+  )
+
 }
 
 export default App;
