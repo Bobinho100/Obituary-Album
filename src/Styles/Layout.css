@@ -29,6 +29,15 @@ div h4:hover{
 }
 
 
+.navbar.overlay-active{
+
+    opacity: 0.5;
+    color: green;
+    background-color: red;
+
+}
+
+
 
 
 
