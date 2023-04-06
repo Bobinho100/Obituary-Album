@@ -1,0 +1,39 @@
+.file-link{
+    cursor: pointer;
+        text-decoration: underline;
+    
+
+}
+.hidden{ 
+    display: none;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 50px;
+}
+form p{
+    margin-top: 10px;
+}
+.date{
+    display: flex;
+    padding: 20px;
+    justify-content: space-around;
+    color: blue;
+
+}
+
+form button{
+    height:50px ;
+    width:500px ;
+    background-color: greenyellow;
+}
+.name{
+    margin: 10px;
+    width: 500px;
+    height: 50px;
+    border-radius: 5px;
+}
