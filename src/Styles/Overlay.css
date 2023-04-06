@@ -22,14 +22,14 @@ form p{
     display: flex;
     padding: 20px;
     justify-content: space-around;
-    color: blue;
+    color: rgb(255, 92, 155);
 
 }
 
 form button{
     height:50px ;
     width:500px ;
-    background-color: greenyellow;
+    background-color: rgb(47, 224, 255);
 }
 .name{
     margin: 10px;
