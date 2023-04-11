@@ -1,12 +1,13 @@
 import React from 'react'
 import "../Styles/Layout.css"
+import Overlay from './Overlay';
 
 const Layout = ({obituaryForm, setObituaryForm, obituaryClick}) => {
   return (
     <>
-        <div className= "">
+        <div className= "top">
 
-            <div className= {`navbar  ${obituaryForm ? 'overlay-active': ''}`}>
+            <div className= "navbar">
                 <div></div>
                 <h1>The last Show</h1>
                 <div className='navbar--obituary'>
@@ -15,10 +16,13 @@ const Layout = ({obituaryForm, setObituaryForm, obituaryClick}) => {
                 </div>
             
             </div>
-
-            <div className='obituary--not-yet'>
+                <div className='obituary--not-yet'>
                 <p>No Obituary Yet</p>
             </div>
+
+
+
+            
 
 
 

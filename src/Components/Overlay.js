@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../Styles/Overlay.css';
 import ObituaryImage from '../Styles/obituary_image2.png';
 
-const Overlay = () => {
+const Overlay = ({setObituaryForm, closeObituaryClick}) => {
 
 
     const [flieSelect, setFileSelect] = useState(null);
@@ -22,47 +22,55 @@ const Overlay = () => {
   return (
     <>
 
-        <form onSubmit={formHandler}>
-            <p>Create a New Obituary</p>
-
-
-            <label htmlFor='img'className='file-link' >
-                {flieSelect ? `Select an image for the deceased (${flieSelect})`: `Select an image for the deceased`}
-                
-                </label>
-            
+        <div className='overlay'>
             <div>
-                <input type='file' id='img'name = 'img' accept='image/*' className='hidden' onChange={fileChange}></input>
+            <button class="close" type="button"  onClick={closeObituaryClick}>&#x2715; Close</button>
 
             </div>
-            <div className='name--input'>
-                <input type= 'text' className='name'></input>
+            
 
-            </div>
+            <form onSubmit={formHandler}>
+                
+                <p>Create a New Obituary</p>
+
+
+                <label htmlFor='img'className='file-link' >
+                    {flieSelect ? `Select an image for the deceased (${flieSelect})`: `Select an image for the deceased`}
+                    
+                    </label>
+                
+                <div>
+                    <input type='file' id='img'name = 'img' accept='image/*' className='hidden' onChange={fileChange}></input>
+
+                </div>
+                <div className='name--input'>
+                    <input type= 'text' className='name'></input>
+
+                </div>
+
+                
+
+                <div className='date'>
+                    <label htmlFor='born'>Born:</label>
+                    <input id='born' name='born' type='datetime-local'></input>
+                    <label htmlFor='died'>Died:</label>
+                    <input id='died' name='died' type='datetime-local'></input>
+
+                </div>
+
+
+                <button>Write Obituary</button>
 
             
 
-            <div className='date'>
-                <label htmlFor='born'>Born:</label>
-                <input id='born' name='born' type='datetime-local'></input>
-                <label htmlFor='died'>Died:</label>
-                <input id='died' name='died' type='datetime-local'></input>
-
-            </div>
-
-
-            <button>Write Obituary</button>
-
-           
 
 
 
+            </form>
 
-        </form>
-
-       
+        
     
-    
+        </div>
     
     </>
   )

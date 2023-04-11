@@ -7,13 +7,36 @@
 .hidden{ 
     display: none;
 }
+
+.overlay{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    height: 100vh;
+    flex-direction: column;
+    
+    /*width: 100%;
+    height: 100vh;*/
+    /*background-color: blue;*/
+    background-color:rgba(255, 255, 255, 0.2) ;
+    /*height: '100%';*/
+    /*width: '100%';*/
+    position: absolute;
+    top: 0;
+}
 form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    margin: 50px;
+    width: 100%;
+    height: 85vh;
+    /*padding: 10px;*/
+    /*margin: 50px;*/
+    /*position: absolute;*/
+    /*background-color: green;*/
+    /*width: 100vh;*/
+    /*height: 100vh;*/
 }
 form p{
     margin-top: 10px;
@@ -36,4 +59,71 @@ form button{
     width: 500px;
     height: 50px;
     border-radius: 5px;
+}
+.close{
+    color: green;
+    background-color: red;
+    align-items: flex-end;
+    display: flex;
+    margin-left: 90%;
+    
+}
+
+
+
+/*
+ left:0,width: '100%', height:'100%', backgroundColor: 'blue'
+*/
+
+
+
+@media only screen and (max-width:600px) {
+
+    .overlay{
+        justify-content: center;
+        height: 100%;
+    }
+    .form{
+        height: auto;
+    }
+    .name{
+        width: 90%;
+    }
+    .date{
+        flex-direction: column;
+        align-items: center;
+    }
+    .close{
+        margin-left: auto;
+        margin-right: 5%;
+    }
+    form button{
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    
+}
+
+@media only screen and (mini-width: 610px){
+    .overlay{
+        justify-content: space-evenly;
+        height: 100vh;
+    }
+    form {
+        height: 85vh;
+    }
+    .name{
+        width: 500px;
+    }
+    .date{
+        flex-direction: row;
+    }
+    .close{
+        margin-left: 90%;
+        margin-right: 0;
+    }
+    form button{
+        width: 500px;
+    }
+
 }
