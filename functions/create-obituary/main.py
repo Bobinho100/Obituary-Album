@@ -95,14 +95,15 @@ def handler(event, context):
     born = binary_data[2].decode()
     died = binary_data[3].decode()
 
-    file_name = os.path.join("/tmp", "obituary.png")
+    '''file_name = os.path.join("/tmp", "obituary.png")
+    #file_name = "functions/create-obituary/pikachu-drawing.png"
     with open(file_name, "wb") as f:
         f.write(binary_data[0])
 
 
     res = upload_to_cloudinary(file_name, resource_type="image")
     #print(res)
-    image_url = res
+    image_url = res["secure_url"]
     #print(image_url)
     #print("today is nice")
 
@@ -119,7 +120,34 @@ def handler(event, context):
     return {
         'statusCode': 200,
         "body": "Success"
-    }
+    }'''
+    file_name = os.path.join("/tmp", "obituary.png")
+    with open(file_name, "wb") as f:
+        f.write(binary_data[0])
+
+    try:
+        response = upload_to_cloudinary(file_name, resource_type="image")
+        image_url = response["secure_url"]
+        os.remove(file_name)
+
+        item = {
+            "id": generate_id(),
+            "image_url": image_url,
+            "name": name,
+            "born": born,
+            "died": died
+        }
+        table.put_item(Item=item)
+
+        return {
+            "statusCode": 200,
+            "body": json.dumps({"message": "Success"}),
+        }
+    except KeyError:
+        return {
+            "statusCode": 500,
+            "body": json.dumps({"message": "Failed to upload image"}),
+        }
    
 
 
@@ -168,6 +196,56 @@ def create_query_string(body):
     return query_string
 
 
+'''
+def add(x,y):
+    z = x + y
+    return z
+'''
+'''
+
+def upload_to_cloudinary(filename, resource_type = "image", extra_fields = ()):
+    api_key =  str(get_keys("/the-last-show/cloudinary-key"))  #"1234"
+    cloud_name = "dmijdquwx"
+    api_secret =   str(get_keys("/the-last-show/cloudinary-secret"))  #"abcd" 
+    timestamp =      int(time.time())       #1315060510   #1682014353   
+
+    body = {
+        "timestamp": timestamp,
+        "api_key": api_key,
+        #"eager": "e_art:zorro",
+        #"eager":"w_400,h_300,c_pad|w_260,h_200,c_crop",
+        "public_id": "sample_image"
+    }
+    files = {
+        "file" : open(filename, "rb")
+    }
+    body.update(extra_fields)
+    body["signature"] = create_signature(body, api_secret)
+    url = f"http://api.cloudinary.com/v1_1/{cloud_name}/{resource_type}/upload"
+    res = requests.post(url, files= files, data=body )
+    return res.json()
+
+def create_signature(body, api_secret):
+    exclude = ["api_key", "resource_type", "cloud_name"]
+    timestamp =int(time.time()) 
+    body["timestamp"] = timestamp
+    sorted_body = sort_dictionary(body, exclude)
+    query_string = create_query_string(sorted_body)
+    query_string_appended = f"{query_string}{api_secret}"
+    hashed = hashlib.sha1(query_string_appended.encode())
+    signature = hashed.hexdigest()
+
+    return signature
 
 
+def sort_dictionary(dictionary, exclude):
+    return {k:v for k, v in sorted(dictionary.items(), key= lambda item:item[0]) if k not in exclude}
 
+def create_query_string(body):
+    query_string = ""
+
+    for idx, (k,v) in enumerate(body.items()):
+        query_string = f"{k}={v}" if idx == 0 else f"{query_string}&{k}={v}"
+
+    return query_string
+'''
