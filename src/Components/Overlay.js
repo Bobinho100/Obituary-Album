@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
 import '../Styles/Overlay.css';
+import CardList from './Card'
+
 import ObituaryImage from '../Styles/obituary_image2.png';
 
-const Overlay = ({setObituaryForm, closeObituaryClick}) => {
+const Overlay = ({setObituaryForm, closeObituaryClick, formSubmitted, setFormSubmitted, submitedForm, cards}) => {
 
 
     const [flie_name, setFileSelect] = useState(null);
     const [name, setName] = useState('');
     const [born, setBorn] = useState('');
     const [died, setDied] = useState('')
-
+    
 
     
     const fileChange =  (event) =>{
-        setFileSelect(event.target.files[0].name);
+        setFileSelect(event.target.files[0]);
     }
     const formHandler = async(event)  => {
         event.preventDefault();
@@ -24,13 +26,22 @@ const Overlay = ({setObituaryForm, closeObituaryClick}) => {
         data.append("died",died)
 
 
-        const promise = await fetch("https://wopiity5iyqkdb6ufndzevh64a0kquuk.lambda-url.ca-central-1.on.aws/", {
+        /*const promise = await fetch("https://wopiity5iyqkdb6ufndzevh64a0kquuk.lambda-url.ca-central-1.on.aws/", {
             method: "POST",
             
             body: data
         })
 
-        console.log(promise)
+        console.log(promise)*/
+        //closeObituaryClick()
+        //setObituaryForm(false)
+
+        //setFormSubmitted(true)
+        submitedForm(data)
+        
+
+        
+        
     
         
     }
@@ -38,6 +49,10 @@ const Overlay = ({setObituaryForm, closeObituaryClick}) => {
 
   return (
     <>
+
+
+      
+
 
         <div className='overlay'>
             <div>
@@ -85,12 +100,19 @@ const Overlay = ({setObituaryForm, closeObituaryClick}) => {
 
             </form>
 
+            
+
         
     
         </div>
+        
+        
     
     </>
   )
 }
+  
+  
+
 
 export default Overlay;

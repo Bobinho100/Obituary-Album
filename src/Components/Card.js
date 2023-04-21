@@ -1,13 +1,33 @@
 import React from 'react'
+import "../Styles/Card.css"
 
-const card = () => {
+const Card = ({card}) => {
   return (
-    <div>
-
-        <div>Image</div>
-        <div>Date</div>
-        <div>Obituary Message</div>
+    <div className="card">
+      <div>
+        
+        <div className='image'>Image</div>
         <div>Name</div>
+        <div className='date1'>
+          <div>born</div>
+          <div>died</div>
+
+        </div>
+      
+
+      </div>
+      <div>
+        <div>obituary_message</div>
+        <div>polly</div>
+
+        
+      </div>
+
+    
+
+        
+       
+       
 
 
 
@@ -16,4 +36,4 @@ const card = () => {
   )
 }
 
-export default card
+export default Card

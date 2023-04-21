@@ -1,3 +1,7 @@
 .overlay-visible{
     opacity: 0.1;
 }
+
+.overlay-not-visible {
+    opacity: 1;
+}

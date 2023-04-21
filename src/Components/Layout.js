@@ -1,8 +1,9 @@
 import React from 'react'
 import "../Styles/Layout.css"
+import CardList from './Card';
 import Overlay from './Overlay';
 
-const Layout = ({obituaryForm, setObituaryForm, obituaryClick}) => {
+const Layout = ({obituaryForm, setObituaryForm, obituaryClick, formSubmitted, setFormSubmitted, addNewCard, cards, editCard, setEditCard}) => {
   return (
     <>
         <div className= "top">
@@ -16,9 +17,10 @@ const Layout = ({obituaryForm, setObituaryForm, obituaryClick}) => {
                 </div>
             
             </div>
-                <div className='obituary--not-yet'>
-                <p>No Obituary Yet</p>
-            </div>
+           {editCard ? (<p>no obi</p>): (
+            <CardList />
+           )}
+                
 
 
 
