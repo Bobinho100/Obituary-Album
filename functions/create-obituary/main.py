@@ -121,9 +121,20 @@ def handler(event, context):
         'statusCode': 200,
         "body": "Success"
     }'''
+
+    prompt = f"write an obituary about a fictional character named {name} who was born on {born} and died on {died}"
+    obituary_message = ask_gpt(prompt)
+
+    response1 = read_this(obituary_message)
+    response2 = upload_to_cloudinary(response1, resource_type="raw")
+    polly_url = response2["secure_url"]
     file_name = os.path.join("/tmp", "obituary.png")
     with open(file_name, "wb") as f:
         f.write(binary_data[0])
+
+    
+    
+
 
     try:
         response = upload_to_cloudinary(file_name, resource_type="image")
@@ -135,7 +146,9 @@ def handler(event, context):
             "image_url": image_url,
             "name": name,
             "born": born,
-            "died": died
+            "died": died,
+            "obituary_message": obituary_message,
+            "polly_url": polly_url
         }
         table.put_item(Item=item)
 
@@ -194,6 +207,42 @@ def create_query_string(body):
         query_string = f"{k}={v}" if idx == 0 else f"{query_string}{k}={v}"
 
     return query_string
+def ask_gpt(prompt):
+    url = "https://api.openai.com/v1/completions"
+    gpt_key = get_keys("/the-last-show/gpt-key")
+    headers = {
+        "Content-Type": "application/json" ,
+        "Authorization": f"Bearer {gpt_key}"
+    }
+    body = {
+    "model": "text-davinci-003",
+    "prompt": prompt,
+    "max_tokens": 400,
+    "temperature": 0.2
+    }
+
+    res = requests.post(url, headers=headers, json=body)
+    return res.json()["choices"][0]["text"]
+
+
+def read_this(text):
+    client = boto3.client('polly')
+    response = client.synthesize_speech(
+    Engine='standard',
+    LanguageCode='en-US',
+    OutputFormat='mp3',
+    Text = text,
+    TextType='text',
+    VoiceId='Joanna'
+)
+    #filename = "polly.mp3"
+    filename = os.path.join("/tmp", "polly.mp3")
+    with open(filename, 'wb') as f:
+        f.write(response['AudioStream'].read())
+
+    return filename
+
+
 
 
 '''
