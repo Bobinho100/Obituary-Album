@@ -37,6 +37,8 @@ const Overlay = ({setObituaryForm, closeObituaryClick, formSubmitted, setFormSub
         //setObituaryForm(false)
 
         //setFormSubmitted(true)
+
+        //console.log('formData:', data.get('name'))
         submitedForm(data)
         
 

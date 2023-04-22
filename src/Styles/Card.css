@@ -1,22 +1,50 @@
 
 
 .card{
-    display: flex;
+    /*display: flex;
     flex-direction: column;
     height: 300px;
     width: 320px;
     background-color: aqua;
     margin: 40px;
     justify-content: center;
+    text-align: center;*/
+
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    justify-content: center;
+
+    background-color: bisque;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    padding: 20px;
+    /*width: 100%;*/
+    width: 280px;
+    /*height: 500px;*/
+    /*height: 300px;*/
+    
 
 }
 .image{
     height: 250px;
     background-color: brown;
 }
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 .date1{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+.obituarymessage{
+    background-color: #f5f5f5;
+    border-radius: 0 0 4px 4px;
+    padding: 16px;
+    
+
 }

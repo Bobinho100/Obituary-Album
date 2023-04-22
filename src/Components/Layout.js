@@ -1,6 +1,7 @@
 import React from 'react'
 import "../Styles/Layout.css"
-import CardList from './Card';
+import Card from './Card';
+import CardList from './CardList';
 import Overlay from './Overlay';
 
 const Layout = ({obituaryForm, setObituaryForm, obituaryClick, formSubmitted, setFormSubmitted, addNewCard, cards, editCard, setEditCard}) => {
@@ -17,17 +18,24 @@ const Layout = ({obituaryForm, setObituaryForm, obituaryClick, formSubmitted, se
                 </div>
             
             </div>
-           {editCard ? (<p>no obi</p>): (
-            <CardList />
-           )}
-                
+            <div className='card--container'>
+           {editCard ? (<p>no obi</p>): 
+           
+           
+           
+           (
 
-
-
+            <div className='testing'>
             
-
-
-
+                <CardList cards = {cards} />
+              
+            
+              </div>
+           
+           )
+           
+           }
+              </div>
         </div>
         
     

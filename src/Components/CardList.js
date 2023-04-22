@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
+import '../Styles/CardList.css'
 
 const CardList = ({cards}) => {
-    const[card, setCard] = useState([]);
+    //console.log(cards)
+    //const[card, setCard] = useState([]);
     //const [error, setError] = useState(false);
 
     /*const getCards = async () => {
@@ -34,21 +36,14 @@ const CardList = ({cards}) => {
 
 
   return (
-    <div>
-        {cards.length > 0 ? (
+    <div className='cardlist'>
+        {cards.length > 0  &&(
             <div className='page'>
                 {cards.map((card) => (
-                    <Card key = {card.id} item = {card}/>
+                    <Card key = {card.id} card = {card}/>
                 ))}
-            </div>
+            </div> )
 
-        ):
-        (
-            <div className='obituary--not-yet'>
-              <p>No Obituary Yet</p>
-            </div>
-
-          )
         
         }
     </div>

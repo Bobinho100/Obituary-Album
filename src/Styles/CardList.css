@@ -1,0 +1,26 @@
+.cardlist {
+   /* display: flex;
+    flex-wrap: wrap;*/
+    /*justify-content:space-around ;*/
+    /*display: flex;
+    flex-wrap: wrap-reverse;
+    align-items: flex-end;
+    justify-items: center;*/
+    display: flex;
+    flex-wrap: wrap;
+    
+    
+    
+    
+  
+}
+.page{
+    display: flex;
+    color: green;
+    display: flex;
+    margin: 20px;
+    padding: 10px;
+    gap: 20px;
+    flex-wrap: wrap;
+   
+}

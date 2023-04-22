@@ -27,7 +27,7 @@ function App() {
     
   };
   const addCard = (card) => {
-    setCards((previous) => [...cards, card])
+    setCards((previous) => [...previous, card])
   }
   const closeObituaryClick = () => {
     setObituaryForm(false)
@@ -35,18 +35,23 @@ function App() {
     
   };
   const submitedForm = (formData) => {
+    console.log('12formData:', formData)
     const newCard = {
       id: cards.length + 1,
-      name: formData.name,
-      born: formData.born,
-      died: formData.died,
-      obituary_message: formData.obituary_message,
-      polly: formData.polly,
+      image:formData.get('file_name'),
+      name: formData.get('name'),
+      born: formData.get('born'),
+      died: formData.get('died'),
+      obituary_message: formData.get('obituary_message'),
+      polly: formData.get('polly')
     };
+
+    console.log('newCard:', newCard)
     setCards((previousCard) => {
       return [newCard, ...previousCard]
     })
     //addCard(newCard)
+    //console.log('form::', formData.get('name'))
     setFormSubmitted(true)
     setOverlayIsVisible(false)
     setObituaryForm(false)
@@ -62,20 +67,16 @@ function App() {
     <div>
 
       <div className={`${ovelayIsVisible ? 'overlay-visible': ''}`}>
-
+     
         <Layout 
         obituaryFrom = {obituaryFrom}
         setObituaryForm = {setObituaryForm}
         obituaryClick = {obituaryClick}
         formSubmitted = {formSubmitted}
         setFormSubmitted = {setFormSubmitted}
-        cards = {cards}
-       
-        
-
-        
-        
+        cards = {cards} 
         />
+         
 
 
       </div>
@@ -98,16 +99,7 @@ function App() {
         </div>
         )
       }
-        
-       
-
-      </div>
-
-      
-      
-      
-      
-      
+      </div>  
 
     </div>
 
