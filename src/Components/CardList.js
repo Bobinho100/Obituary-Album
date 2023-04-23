@@ -48,7 +48,7 @@ const CardList = ({cards}) => {
                 {cards.map((card) => (
                     <Card key = {card.id} 
                     card = {card}
-                    handleDisplayObituary1 = {handleDisplayObituary1}
+            
                     
                     />
                 ))}
