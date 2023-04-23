@@ -3,6 +3,12 @@ import Card from './Card'
 import '../Styles/CardList.css'
 
 const CardList = ({cards}) => {
+
+
+
+   
+
+   
     //console.log(cards)
     //const[card, setCard] = useState([]);
     //const [error, setError] = useState(false);
@@ -40,7 +46,11 @@ const CardList = ({cards}) => {
         {cards.length > 0  &&(
             <div className='page'>
                 {cards.map((card) => (
-                    <Card key = {card.id} card = {card}/>
+                    <Card key = {card.id} 
+                    card = {card}
+                    handleDisplayObituary1 = {handleDisplayObituary1}
+                    
+                    />
                 ))}
             </div> )
 

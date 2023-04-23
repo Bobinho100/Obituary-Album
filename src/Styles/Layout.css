@@ -41,6 +41,26 @@ div h4:hover{
     height: 100vh;
 }
 
+.card--container{
+    display: flex;
+    
+
+}
+
+.testing {
+    
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*flex-direction: row;*/
+    /*flex-wrap: wrap;*/
+    flex-wrap: wrap;
+    /*background-color: black;*/
+    
+
+  
+}
+
 
 
 

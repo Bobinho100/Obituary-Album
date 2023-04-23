@@ -9,12 +9,17 @@ dynamodb_resource = boto3.resource("dynamodb")
 table = dynamodb_resource.Table("the-last-show-30112955")
 
 def handler(event, context):
-    id = event["queryStringParameters"]["id"]
+    
     try:
-        res = table.query(KeyConditionExpression = Key("id").eq(id))
+        response = table.scan()
+        items = response['Items']
+        while 'LastEvaluatedKey' in response:
+                response = table.scan(ExclusiveStartKey=response['LastEvaluatedKey'])
+                items.extend(response['Items'])
+        
         return{
             "statusCode":200,
-            "body": json.dumps(res["Items"])
+            "body": json.dumps(response["Items"])
         }
     except Exception as e:
         print(f"exception: {e}")

@@ -159,7 +159,7 @@ resource "aws_iam_policy" "get_obituaries_logs" {
         "logs:CreateLogGroup",
         "logs:CreateLogStream",
         "logs:PutLogEvents",
-        "dynamodb:Query"
+        "dynamodb:Scan"
       ],
       "Resource": ["arn:aws:logs:*:*:*", "${aws_dynamodb_table.the-last-show.arn}"],
       "Effect": "Allow"

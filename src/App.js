@@ -1,7 +1,7 @@
 import Overlay from "./Components/Overlay";
 import Layout from "./Components/Layout";
 import './App.css'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardList from "./Components/CardList";
 
 
@@ -13,30 +13,19 @@ function App() {
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [cards, setCards] = useState([]);
   const [editCard, setEditCard] = useState(true)
+  const [error, setError] = useState(false)
 
   const obituaryClick = () => {
     
     setObituaryForm(true)
     setOverlayIsVisible(true)
     
-    setFormSubmitted(false)
-      
-
-    
-    
+    setFormSubmitted(false) 
     
   };
-  const addCard = (card) => {
-    setCards((previous) => [...previous, card])
-  }
-  const closeObituaryClick = () => {
-    setObituaryForm(false)
-    setOverlayIsVisible(false)
-    
-  };
-  const submitedForm = (formData) => {
-    console.log('12formData:', formData)
-    const newCard = {
+  const submitedForm = async () => {
+    //console.log('12formData:', formData)
+    /*const newCard = {
       id: cards.length + 1,
       image:formData.get('file_name'),
       name: formData.get('name'),
@@ -44,19 +33,78 @@ function App() {
       died: formData.get('died'),
       obituary_message: formData.get('obituary_message'),
       polly: formData.get('polly')
-    };
+    };*/
 
-    console.log('newCard:', newCard)
+    /*console.log('newCard:', newCard)
     setCards((previousCard) => {
       return [newCard, ...previousCard]
-    })
+    })*/
     //addCard(newCard)
-    //console.log('form::', formData.get('name'))
-    setFormSubmitted(true)
-    setOverlayIsVisible(false)
-    setObituaryForm(false)
-    setEditCard(!editCard)
+    //console.log('form::', formData.get('name')
+    const response = await fetch(`https://ufgwofspyiqnxbwk5fxwjlighe0delab.lambda-url.ca-central-1.on.aws/`, {
+        method: "GET"
+      })
+      const data = await response.json();
+      setCards(data);
+    
+
+    
+
+
+
+
+      setFormSubmitted(true)
+      setOverlayIsVisible(false)
+      setObituaryForm(false)
+      setEditCard(!editCard)
   }
+
+  /*useEffect(() => {
+    submitedForm()
+  })*/
+
+
+  /*useEffect(() => {
+   const getCards = async () => {
+    try{
+      const response = await fetch(`https://ufgwofspyiqnxbwk5fxwjlighe0delab.lambda-url.ca-central-1.on.aws/`, {
+        method: "GET"
+      })
+      const data = await response.json();
+      setCards(data);
+    }catch(e){
+      setError(true)
+    }
+   }
+
+   getCards();
+   
+    
+    
+
+  }, [])*/
+  
+ 
+ 
+
+ 
+
+
+
+
+
+  /*const addCard = (card) => {
+    setCards((previous) => [...previous, card])
+  }*/
+  const closeObituaryClick = () => {
+    setObituaryForm(false)
+    setOverlayIsVisible(false)
+    
+  };
+ 
+
+  
+  
   
 
 

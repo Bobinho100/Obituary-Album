@@ -3,10 +3,31 @@ import "../Styles/Card.css"
 
 const Card = ({card}) => {
   const [displayObituary, setDisplayObituary] = useState(false);
+  const [audioPlaying, setAudioPlaying] = useState(false);
+  const [audio, setAudio] = useState(null);
+
 
   const handleDisplayObituary = () => {
     setDisplayObituary(!displayObituary)
   }
+
+  const handlePlayAudio = () => {
+    if (!audio) {
+      const newAudio = new Audio(card.polly_url);
+      setAudio(newAudio);
+      newAudio.play();
+      setAudioPlaying(true);
+    } else {
+      if (audioPlaying) {
+        audio.pause();
+        setAudioPlaying(false);
+      } else {
+        audio.play();
+        setAudioPlaying(true);
+      }
+    }
+  };
+
 
   return (
     <div className="card">
@@ -14,7 +35,7 @@ const Card = ({card}) => {
         
         {/*<div className='image'>{card.image}</div>*/}
         <div  onClick={handleDisplayObituary} className='image'>
-          <img src={card.file_name}  alt = '' />  
+          <img src={card.image_url}  alt = '' />  
           
 
         </div>
@@ -32,23 +53,18 @@ const Card = ({card}) => {
         {displayObituary && (
         <div className='obituarymessage'>
           <p>
-          DynamoDB is a fully managed, 
-          high-performance, NoSQL database service provided by 
-          AWS. It is designed to provide fast and predictable
-           performance with seamless
-           scalability. DynamoDB is a non-relational
-            database that allows users to store and 
-            retrieve data, while maintaining low latency and high 
-            availability. DynamoDB is a schema-less database, which 
-            means that users can store data in any format
-             without defining a schema beforehand.
+          {card.obituary_message}
           </p>
 
         </div>)
         }
        
         <div className='polly'>
-          <button>polly</button>
+          <button onClick={handlePlayAudio}>
+            
+          {audioPlaying ? 'Pause' : 'Play'} Polly
+
+            </button>
         </div>
 
         
