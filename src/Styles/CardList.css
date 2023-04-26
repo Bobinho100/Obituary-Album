@@ -22,5 +22,7 @@
     padding: 10px;
     gap: 20px;
     flex-wrap: wrap;
+    align-items: flex-start;
+    
    
 }

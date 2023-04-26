@@ -101,6 +101,31 @@ function App() {
     setOverlayIsVisible(false)
     
   };
+
+ /*const submitedForm = (formData) => {
+  const newCard = {
+    id: cards.length + 1,
+    image:formData.get('file_name'),
+    name: formData.get('name'),
+    born: formData.get('born'),
+    died: formData.get('died'),
+    obituary_message: formData.get('obituary_message'),
+    polly: formData.get('polly')
+  };
+
+    console.log('newCard:', newCard)
+    setCards((previousCard) => {
+    return [newCard, ...previousCard]
+    })
+
+
+
+     setFormSubmitted(true)
+      setOverlayIsVisible(false)
+      setObituaryForm(false)
+      setEditCard(!editCard)
+
+  }*/
  
 
   

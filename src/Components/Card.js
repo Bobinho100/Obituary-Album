@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
 import "../Styles/Card.css"
 
-const Card = ({card}) => {
+const Card = ({card, index,  isDisplayed, onCardClick }) => {
   const [displayObituary, setDisplayObituary] = useState(false);
   const [audioPlaying, setAudioPlaying] = useState(false);
   const [audio, setAudio] = useState(null);
 
 
-  const handleDisplayObituary = () => {
+  const handleDisplayObituary= () => {
     setDisplayObituary(!displayObituary)
+    console.log(card.id)
   }
+
+
 
   const handlePlayAudio = () => {
     if (!audio) {
@@ -34,15 +37,16 @@ const Card = ({card}) => {
       <div>
         
         {/*<div className='image'>{card.image}</div>*/}
-        <div  onClick={handleDisplayObituary} className='image'>
+        <div onClick={() => handleDisplayObituary()} className='image'>
           <img src={card.image_url}  alt = '' />  
           
 
         </div>
         
-        <div>{card.name}</div>
+        <div className='card--name'>{card.name}</div>
         <div className='date1'>
           <span>{card.born}</span>
+          <span>-</span>
           <span>{card.died}</span>
 
         </div>

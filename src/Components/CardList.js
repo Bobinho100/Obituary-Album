@@ -3,7 +3,10 @@ import Card from './Card'
 import '../Styles/CardList.css'
 
 const CardList = ({cards}) => {
+  
 
+
+   
 
 
    
@@ -45,9 +48,11 @@ const CardList = ({cards}) => {
     <div className='cardlist'>
         {cards.length > 0  &&(
             <div className='page'>
-                {cards.map((card) => (
+                {cards.map((card, index) => (
                     <Card key = {card.id} 
                     card = {card}
+                    index = {index}
+                    
             
                     
                     />

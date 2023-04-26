@@ -11,6 +11,20 @@ const Overlay = ({setObituaryForm, closeObituaryClick, formSubmitted, setFormSub
     const [name, setName] = useState('');
     const [born, setBorn] = useState('');
     const [died, setDied] = useState('')
+    const [abled, setAbled] = useState(false)
+
+
+    function formatDate(dateString) {
+        const options = { month: 'long', day: 'numeric', year: 'numeric' };
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', options);
+      }
+
+    const formattedBorn = formatDate(born);
+    const formattedDied = formatDate(died);
+
+        //data.append("born", formattedBorn);
+        //data.append("died", formattedDied);
     
 
     
@@ -22,24 +36,28 @@ const Overlay = ({setObituaryForm, closeObituaryClick, formSubmitted, setFormSub
         const data = new FormData();
         data.append("file_name", flie_name)
         data.append("name",name)
-        data.append("born",born)
-        data.append("died",died)
+        data.append("born", formattedBorn);
+        data.append("died", formattedDied)
+        //data.append("born",born)
+        //data.append("died",died)
+        setAbled(true)
 
 
-        /*const promise = await fetch("https://wopiity5iyqkdb6ufndzevh64a0kquuk.lambda-url.ca-central-1.on.aws/", {
+        const promise = await fetch("https://wopiity5iyqkdb6ufndzevh64a0kquuk.lambda-url.ca-central-1.on.aws/", {
             method: "POST",
             
             body: data
         })
 
-        console.log(promise)*/
+        console.log(promise)
+        setAbled(false)
         //closeObituaryClick()
         //setObituaryForm(false)
 
         //setFormSubmitted(true)
 
         //console.log('formData:', data.get('name'))
-        submitedForm(data)
+        submitedForm()
         
 
         
@@ -65,7 +83,9 @@ const Overlay = ({setObituaryForm, closeObituaryClick, formSubmitted, setFormSub
 
             <form onSubmit={formHandler}>
                 
-                <p>Create a New Obituary</p>
+                <h1>Create a New Obituary</h1>
+
+                <img  className='obi--image' src='https://res.cloudinary.com/dcdhtswkq/image/upload/v1681261014/Screen_Shot_2023-04-11_at_6.56.09_PM_ojqtvg.png' alt=''></img>
 
 
                 <label htmlFor='img'className='file-link' >
@@ -73,12 +93,18 @@ const Overlay = ({setObituaryForm, closeObituaryClick, formSubmitted, setFormSub
                     
                     </label>
                 
+                
                 <div>
                     <input type='file' id='img'name = 'img' accept='image/*' className='hidden' onChange={fileChange}></input>
 
                 </div>
                 <div className='name--input'>
-                    <input type= 'text'  onChange={(e) => setName(e.target.value)} className='name'></input>
+                    <input  type= 'text'
+                            required onChange={(e) => setName(e.target.value)}
+                            className='name'
+                            placeholder='Name of Deceased'
+                      
+                      ></input>
 
                 </div>
 
@@ -93,7 +119,11 @@ const Overlay = ({setObituaryForm, closeObituaryClick, formSubmitted, setFormSub
                 </div>
 
 
-                <button>Write Obituary</button>
+                <button className={abled ? 'not-disabled': ''}  disabled = {abled}>
+                    {!abled ? "Write Obituary" : "We are waiting to get everything...."}
+                    
+                    
+                    </button>
 
             
 
