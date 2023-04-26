@@ -46,14 +46,14 @@ form p{
     display: flex;
     padding: 20px;
     justify-content: space-around;
-    color: rgb(255, 92, 155);
+    color: rgb(19, 3, 9);
 
 }
 
 form button{
     height:50px ;
     width:500px ;
-    background-color: rgb(47, 224, 255);
+    background-color: rgb(253, 174, 216);
 }
 .name{
     margin: 10px;
@@ -67,6 +67,7 @@ form button{
     align-items: flex-end;
     display: flex;
     margin-left: 90%;
+    
     
 }
 .obi--image{
