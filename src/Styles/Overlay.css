@@ -1,6 +1,7 @@
 .file-link{
     cursor: pointer;
         text-decoration: underline;
+    margin-bottom: 10px;
     
 
 }
@@ -68,7 +69,14 @@ form button{
     margin-left: 90%;
     
 }
-
+.obi--image{
+    /*background-color: blue;*/
+    padding: 10px;
+    margin: 10px;
+}
+form h1{
+    color: grey;
+}
 
 
 /*
@@ -125,5 +133,10 @@ form button{
     form button{
         width: 500px;
     }
+
+}
+.not-disabled {
+    cursor: not-allowed;
+    background-color: grey;
 
 }
