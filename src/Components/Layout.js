@@ -4,7 +4,7 @@ import Card from './Card';
 import CardList from './CardList';
 import Overlay from './Overlay';
 
-const Layout = ({obituaryForm, setObituaryForm, obituaryClick, formSubmitted, setFormSubmitted, addNewCard, cards, editCard, setEditCard}) => {
+const Layout = ({obituaryForm, setObituaryForm, obituaryClick, formSubmitted, setFormSubmitted, addNewCard, cards, editCard, setEditCard, check}) => {
   return (
     <>
         <div className= "top">
@@ -13,12 +13,21 @@ const Layout = ({obituaryForm, setObituaryForm, obituaryClick, formSubmitted, se
                 <div></div>
                 <h1>The last Show</h1>
                 <div className='navbar--obituary'>
-                <h4 role='button' onClick={obituaryClick}> + New Obituary</h4>
+                <h4 role='button' onClick={obituaryClick}> + New Obituary </h4>
                     
                 </div>
             
             </div>
             <div className='card--container'>
+
+              <div className='default--container'>
+
+              {check && (<p className='default'> No Obituary yet</p>)}
+
+
+              </div>
+              
+              
            {editCard ? (<p>no obi</p>): 
            
            

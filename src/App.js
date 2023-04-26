@@ -14,6 +14,7 @@ function App() {
   const [cards, setCards] = useState([]);
   const [editCard, setEditCard] = useState(true)
   const [error, setError] = useState(false)
+  const [check, setCheck] = useState(true)
 
   const obituaryClick = () => {
     
@@ -57,6 +58,7 @@ function App() {
       setOverlayIsVisible(false)
       setObituaryForm(false)
       setEditCard(!editCard)
+      setCheck(false)
   }
 
   /*useEffect(() => {
@@ -148,6 +150,7 @@ function App() {
         formSubmitted = {formSubmitted}
         setFormSubmitted = {setFormSubmitted}
         cards = {cards} 
+        check = {check}
         />
          
 

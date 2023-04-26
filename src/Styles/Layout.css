@@ -60,6 +60,22 @@ div h4:hover{
 
   
 }
+.default--container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+}
+.default {
+    font-size: 4.0vw;
+    text-align: center;
+    margin: 20px;
+}
 
 
 
