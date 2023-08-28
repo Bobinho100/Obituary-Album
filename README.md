@@ -1,5 +1,14 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/o-xnQ34X)
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-8d59dc4de5201274e310e4c54b9627a8934c3b88527886e3b421487c677d23eb.svg)](https://classroom.github.com/a/o-xnQ34X)
+## This is the modified repository.
+
+# Link to the deployed project
+- https://glittery-caramel-811fbd.netlify.app
+
+# How to check out the project
+- You can look at the final details section below to see how it works. There are pictoral representations on the steps needed.
+- You can click the link above at the Deployed project section.
+
+
+
 # The Last Show
 
 In this assignment, you will create a full stack application with React and AWS that generates obituaries for people (fictional or otherwise). You will use [ChatGPT](https://openai.com/blog/chatgpt) to generate an obituary, [Amazon Polly](https://aws.amazon.com/polly/) to turn the obituary into speech, and [Cloudinary](https://cloudinary.com/) to store the speech and a picture of the deceased (may they rest in peace).
@@ -52,42 +61,34 @@ In this assignment, you will create a full stack application with React and AWS 
 - The Demo doesn't use any external library for the front-end
 - In order to get the full mark, you need to **DEMO your work in PERSON**. You could either demo it to a TA or the instructor. Demo is 50% of the assignment
 
-## :couple: Group Assignment
-
-In case you're doing the assignment as part of a group, pay attention to the following so you won't lose any points:
-
-- Use the UCID of one team member to name the Lambdas, and the other one to name the DynamoDB table
-- Put the names and UCIDs of the team members in the [Team-Members](./Team-Members.md) file
-- Both members must commit to the group repo. If a student has no commit after the deadline, their grade will be Zero. Things like "I sent the code over TikTok or Discord" are not acceptable. **No commmit = No grade**
-- Try to split the work as evenly as possible between team members
-- Both members must be present for the Demo. If you're not present, your grade will be Zero for the Demo
-
-## :heavy_check_mark: Things you may change
-
-- You may use a CSS framework to build the UI. The Demo only uses FlexBox
-- You may use a different voice id with Amazon Polly. The Demo uses Joanna
-- You may use a different model for your ChatGPT integration. The Demo uses `text-curie-001`
-- You may use a different prompt for the model as long as the final result is the same. The Demo uses `write an obituary about a fictional character named {name} who was born on {born_year} and died on {died_year}.`
-- You may use a different font. The Demo uses [Satisfy](https://fonts.google.com/specimen/Satisfy?query=satisfy)
-
-## :moneybag: Cost
-
-- This assignment won't cost you anything if you follow the best practices discussed in the class
-- Use the `PROVISIONED` billing mode, and only 1 RCU and WCU for your DynamoDB table as shown in the [lecture notes](https://masoudkarimif.github.io/posts/aws-dynamodb-crud-with-lambda-terraform/#create-a-dynamodb-table-with-terraform)
-- Don't use a memory configuration bigger than 128MB for your Lambdas. Use the [lecture notes](https://masoudkarimif.github.io/posts/aws-lambda-with-terraform/#create-a-lambda-function) to create Lambda functions. When you don't specify the `memory_size` field, it will default to 128MB which is the minimum amount
-- Don't send a huge number of requests to your Lambdas using automated scripts. You have 1 Million free requests, and up to 3.2 million seconds of free compute time under the [Free Tier](https://aws.amazon.com/free/)
-- Remember to enable Free Tier notifications on your account before building anything as shown in the videos on D2L
-- If you go over the Free Tier (you would have to screw it up really bad, honestly), you can create a new Free AWS account and build your infrastructure there instead. Thankfully, Terraform makes that process super easy for you
-- Cloudinary has a generous free tier. If you don't send thousands of requests for large files, you won't have to pay anything. If you're over the free tier, you could create a new free account (will give you new keys)
-- ChatGPT has a free tier. If you're careful, you won't have to pay anything. If you're over the free tier, you could create a new free account (will give you new API Key)
 
 
-## :heavy_plus_sign: Bonus Marks
-- You can grab 10 extra points if you orchestrate different steps of the `create-obituary` Lambda function with [AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html). You would have to orchestrate 4 Lambda functions:
-  - `generate-obituary` that uses ChatGPT
-  - `read-obituary` that uses Amazon Polly
-  - `store-files` that uses Cloudinary to store both the picture and speech
-  - `save-item` that uses DynamoDB to store a new item
-- You must create all the infra using Terraform
-- Step Functions won't send you a response right away, but the app still needs to find out when the workflow is finished and add a new obituary to the front-end
-- No partial implementation is considered. If the implementation doesn't work properly from beginning to end, there will be no bonus marks for the assignment
+
+  ## : Final Details
+  
+
+  
+  This is the first page of the application. You can add a new obituary.
+  <img width="1511" alt="Screenshot 2023-08-27 at 9 20 22 PM" src="https://github.com/Bobinho100/Obituary-Album/assets/114113147/4581cb91-a038-4cfa-9fb0-1361fd1c243a">
+  # A form displays, Ensure to fill the form
+  
+  <img width="1510" alt="Screenshot 2023-08-27 at 9 26 49 PM" src="https://github.com/Bobinho100/Obituary-Album/assets/114113147/d02abdf8-7a2f-4bd5-a869-d8129df4a3ae">
+
+  
+  ## The filled form
+
+  <img width="1511" alt="Screenshot 2023-08-27 at 9 46 08 PM" src="https://github.com/Bobinho100/Obituary-Album/assets/114113147/f960aa55-478a-411d-8bc4-00a8b36bcc16">
+
+  ## The result
+
+  
+  <img width="1512" alt="Screenshot 2023-08-27 at 9 40 22 PM" src="https://github.com/Bobinho100/Obituary-Album/assets/114113147/c9084dce-e894-4c39-a7ed-cc8d6dd6d1cf">
+
+ # It uses Chat API to generate a prompt based on the name and date of your deceased fictional character.
+  <img width="1508" alt="Screenshot 2023-08-27 at 9 42 23 PM" src="https://github.com/Bobinho100/Obituary-Album/assets/114113147/419d06b3-d732-455e-80b4-ec37806b9dd0">
+
+  
+
+
+
+
